@@ -1,0 +1,91 @@
+h1{
+    text-align: center; 
+    color: rgb(33, 30, 30);
+    font-family: inherit;
+    font-size: 3rem;
+}
+
+/*입력창*/
+input{
+    width:94.5%;
+    padding: 10px 10px;
+    font-family: inherit;
+    font-size: 25px;
+    border-radius: 10px 10px 10px 10px;
+    border-color:rgb(255, 214, 179);
+}
+
+input::placeholder{
+    font-size: large;
+}
+
+input:focus {
+    outline: none;
+}
+
+/*로그인, 회원가입 버튼*/
+.main-button{
+    width: 100%;
+    padding: 10px 10px;
+    font-family: inherit;
+    font-size: 20px;
+    background-color: rgb(255, 214, 179);
+    cursor:pointer;
+    border-radius: 10px 10px 10px 10px;
+    border-color: rgb(255, 214, 179);
+}
+.main-button:hover{
+    background-color:#fcb56d
+}
+
+.Button-all{
+    padding-top: 5px;
+}
+
+.box{
+    width: 400px;
+    margin:auto;
+}
+
+body{
+    padding: 15%;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 2rem;
+}
+
+
+/*알림 메시지*/
+.hide {
+    display: none;
+  }
+
+.id-success-message{
+    font-size: 20px;
+}
+
+.id-failure-message{
+    font-size: 20px;
+    color: red;
+}
+
+.mismatch-message{
+    font-size: 20px;
+    color: red;
+}
+
+.match-message{
+    font-size: 20px;
+}
+
+.pw-condition{
+    font-size: 20px;
+    color: red;
+}
+
+/*폰트*/
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
