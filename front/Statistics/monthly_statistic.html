@@ -7,91 +7,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>감정록, 감정을 기록하다</title>
     <link rel="stylesheet" href="statistics.css">
-    
+
 </head>
 
 <body>
 
+    <!-- 로그아웃 버튼 -->
     <div class="logout"><button class="logout-button" onclick="logout();">로그아웃</button></div>
-    <div><button type="button" class="home-button" onclick="home();"></button></div>
+    <!-- 홈 버튼-->
+    <div><button class="home-button" onclick="home();"></button></div>
+    <!-- "OOO 님의 월별 감정 통계" -->
     <div id="username"></div>
-
-
-    <!--년월 셀렉트 박스-->
-    
+    <div class="line"></div>
 
 
 
+    <!-- 월별 감정 통계 -->
+    <main class="main">
 
-    <main>
-        <div class="box">
-            <div class="bar-graph">
-                <div class="bar" id="joy-bar">
-                    <div class="bar-percentage"></div>
-                </div>
-                <div class="bar" id="sadness-bar">
-                    <div class="bar-percentage">
-                    </div>
-                </div>
-                <div class="bar" id="anticipation-bar">
-                    <div class="bar-percentage">
-                        
-                    </div>
-                </div>
-                <div class="bar" id="surprise-bar">
-                    <div class="bar-percentage">
-                        
-                    </div>
-                </div>
-                <div class="bar" id="anger-bar">
-                    <div class="bar-percentage">
-                        
-                    </div>
-                </div>
-                <div class="bar" id="fear-bar">
-                    <div class="bar-percentage">
-                        
-                    </div>
-                </div>
-                <div class="bar" id="disgust-bar">
-                    <div class="bar-percentage">
-                        
-                    </div>
-                </div>
-                <div class="bar" id="shame-bar">
-                    <div class="bar-percentage">
-                        
-                    </div>
-                </div>
-            </div>
-
-            <div class = "line"></div>
-
-
-            <div class="bar-image">
-                <img src="./image/1.Very Happy Emoji.png" width="30px" height="30px" background-size: contain;>
-                <img src="./image/2.Loudly Crying Emoji.png" width="30px" height="30px" background-size: contain;>
-                <img src="./image/3.Sad Emoji.png" width="30px" height="30px" background-size: contain;>
-                <img src="./image/4.Heart Eyes Emoji.png" width="30px" height="30px" background-size: contain;>
-                <img src="./image/5.Fearful Emoji.png" width="30px" height="30px" background-size: contain;>
-                <img src="./image/6.smile.png" width="30px" height="30px" background-size: contain;>
-                <img src="./image/7.Neutral Emoji.png" width="30px" height="30px" background-size: contain;>
-                <img src="./image/8.Angry Emoji.png" width="30px" height="30px" background-size: contain;>
-            </div>
+        <!--날짜 셀렉트 박스-->
+        <div class="month" >
+            <input type="month" value="2023-05" id="date" name="date">
+            <!-- <button onclick="selectDate()">click</button> -->
         </div>
         
 
-        <!-- 감정분석 -->
+        <div class="box">
+            <div class="bar-graph">
+                <div class="bar" id="Very_Happy-bar">
+                    <div class="bar-percentage"></div>
+                </div>
+                <div class="bar" id="Loudly_Crying-bar">
+                    <div class="bar-percentage"></div>
+                </div>
+                <div class="bar" id="Sad-bar">
+                    <div class="bar-percentage"></div>
+                </div>
+                <div class="bar" id="Heart_Eyes-bar">
+                    <div class="bar-percentage"></div>
+                </div>
+                <div class="bar" id="Fearful-bar">
+                    <div class="bar-percentage"></div>
+                </div>
+                <div class="bar" id="smile-bar">
+                    <div class="bar-percentage"></div>
+                </div>
+                <div class="bar" id="Neutral-bar">
+                    <div class="bar-percentage"></div>
+                </div>
+                <div class="bar" id="Angry-bar">
+                    <div class="bar-percentage"></div>
+                </div>
+            </div>
+            <div class="line"></div>
+
+
+            <div class="bar-image">
+                <img src="./image/Very_Happy.png" width="30px" height="30px" background-size: contain;>
+                <img src="./image/Loudly_Crying.png" width="30px" height="30px" background-size: contain;>
+                <img src="./image/Sad.png" width="30px" height="30px" background-size: contain;>
+                <img src="./image/Heart_Eyes.png" width="30px" height="30px" background-size: contain;>
+                <img src="./image/Fearful.png" width="30px" height="30px" background-size: contain;>
+                <img src="./image/smile.png" width="30px" height="30px" background-size: contain;>
+                <img src="./image/Neutral.png" width="30px" height="30px" background-size: contain;>
+                <img src="./image/Angry.png" width="30px" height="30px" background-size: contain;>
+            </div>
+        </div>
+
+
+        <!-- 감정 분석 -->
         <div id="analysis-section">
-            <h2> <span>5</span> <span>월 감정분석</span></h2>
+            <!-- OO월 감정 분석-->
+            <h2 id="month_info"> 감정분석</h2>
+
             <div class="analysis-container">
+                <!-- 가장 많은 감정 -->
                 <div class="most-emotion">
                     <h3>가장 많은 감정:</h3>
-                    
+                    <img id="most-image"/>
+                    <div id="most-percentage"></div>
                 </div>
+
+                <!-- 가장 적은 감정 -->
                 <div class="least-emotion">
                     <h3>가장 적은 감정:</h3>
-                    
+                    <img id="least-image">
+                    <div id="least-percentage"></div>
                 </div>
             </div>
         </div>
@@ -101,7 +102,7 @@
         <div id="advice-section">
             <h2>조언</h2>
             <div class="advice-container">
-                <p>나는 짱이다 세 번 외치세요.</p>
+                <div id="advice"></div>
             </div>
         </div>
 
