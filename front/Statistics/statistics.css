@@ -1,4 +1,4 @@
-/* ¿¸√º Ω∫≈∏¿œ */
+/* Ï†ÑÏ≤¥ Ïä§ÌÉÄÏùº */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -33,9 +33,20 @@
     background-image: url('./image/home.png');
 }
 
-.date {
+
+input[type="month"],
+textarea {
+    font-family: 'GangwonEdu_OTFBoldA', sans-serif;
+    display: block;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
     margin: 0 auto;
+    margin-top: 30px;
 }
+
 
 #username {
     text-align: center;
@@ -44,12 +55,11 @@
 
 
 
-
-/* ≈Î∞Ë */
+/* ÌÜµÍ≥Ñ */
 .box{
     /* width: fit-content; */
     width:auto;
-    padding: 30px 130px 0 130px;
+    padding: 0px 130px 0 130px;
     margin: 0 auto;
 }
 
@@ -85,7 +95,6 @@
     left: 33%;
     top: -20px;
     font-size: 12px;
-
 }
 
 .bar-image{
@@ -104,7 +113,7 @@
 
 
 
-/* ∞®¡§∫–ºÆ */
+/* Í∞êÏ†ïÎ∂ÑÏÑù */
 #analysis-section {
     font-family: inherit;
     background-color: #f2f2f2;
@@ -113,6 +122,8 @@
     padding: 30px;
     margin: 30px;
     font-size: 1.5rem;
+
+    
 }
 
 .analysis-container {
@@ -120,18 +131,21 @@
     justify-content: space-between;
     align-items: center;
     font-family: inherit;
-    
 }
 
 .most-emotion,
 .least-emotion {
     flex-basis: calc(50% - 10px);
-    /* border: 1px solid #ccc; */
     padding: 20px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     font-family: inherit;
     border-radius: 30px 30px 30px 30px;
     background-color: #fde8ce;
+
+
+    display: flex;
+    align-items: center; /* ÏÑ∏Î°ú Ï§ëÏïô Ï†ïÎ†¨ */
+    justify-content: center; /* Í∞ÄÎ°ú Ï§ëÏïô Ï†ïÎ†¨ */
     
 }
 
@@ -139,22 +153,26 @@
 .least-emotion h3 {
     font-size: 1.2rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     font-family: inherit;
 }
 
-.most-emotion p,
-.least-emotion p {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    font-family: inherit;
+.most-emotion img,
+.least-emotion img {
+    width:auto;
+    padding: 5px 10px 15px 10px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
 }
 
 
 
 
-/* ¡∂æ */
+
+
+
+/* Ï°∞Ïñ∏ */
 #advice-section {
     font-family: inherit;
     background-color: #f2f2f2;
@@ -174,8 +192,7 @@
 
 
 
-
-/*∆˘∆Æ*/
+/*Ìè∞Ìä∏*/
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
