@@ -18,6 +18,7 @@ public class Diary {
 
     @Id
     private int diaryId;
+    private String diaryDate;
     private String diaryUser;
     private String diaryWeather;
     private String diaryEmotion;
@@ -25,8 +26,9 @@ public class Diary {
     private String diaryContent;
 
     @Builder
-    public Diary(int diaryId, String diaryUser, String diaryWeather, String diaryEmotion, String diaryTitle, String diaryContent) {
+    public Diary(int diaryId, String diaryDate,String diaryUser, String diaryWeather, String diaryEmotion, String diaryTitle, String diaryContent) {
         this.diaryId = diaryId;
+        this.diaryDate =  diaryDate;
         this.diaryUser = diaryUser;
         this.diaryWeather = diaryWeather;
         this.diaryEmotion = diaryEmotion;

@@ -1,6 +1,4 @@
 
-
-
 // 로그아웃 로직
 function logout() {}
 
@@ -22,9 +20,6 @@ window.onload = function () {
   var username = getUserName();
   nameId.innerHTML = username + "님의 월별 감정 통계";
 };
-
-
-//////////////////////////////////////////////////////
 
 
 // 감정 데이터
@@ -150,7 +145,6 @@ function Advice(emotion) {
 function setEmotionValue(month_info) {
 
 }
-
 
 function getDiary(month_info){
     // db에서 where diary.date = month_info AND diary.emotion = "슬픔???????" 

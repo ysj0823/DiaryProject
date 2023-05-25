@@ -5,22 +5,19 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import project.diary.domain.diary.Diary;
 import project.diary.domain.diary.DiaryRepository;
-import project.diary.domain.user.User;
 import project.diary.dto.diary.DiaryRequestDTO;
 import project.diary.dto.diary.DiaryResponseDTO;
 import project.diary.dto.diary.DiaryUpdateRequestDTO;
 import project.diary.dto.user.UserDecodeJWTDTO;
-import project.diary.dto.user.UserRequestDto;
-import project.diary.dto.user.UserResponseDto;
-import project.diary.dto.user.UserUpdateRequestDto;
 import project.diary.infra.jwt.JwtFactory;
 import project.diary.service.DiaryService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.security.KeyStore;
+import java.util.*;
 
 @Slf4j
 @RequestMapping("/api")
@@ -78,7 +75,7 @@ public class DiaryController {
         return ResponseEntity.ok().build();
     }
 
-    // 이미 있는 데이터 조회
+    // 이미 있는 데이터 조회 -> id로 조회
     @GetMapping("/calendar/{diaryId}")
     public ResponseEntity<DiaryResponseDTO> diaryPage(@PathVariable int diaryId) throws Exception {
         DiaryService diaryService = new DiaryService(diaryRepository);
@@ -87,4 +84,53 @@ public class DiaryController {
     }
 
 
+    // 캘린더 조회 (한 달 치 일기)
+    @GetMapping("/home/calendar/{year_month}")
+    public ResponseEntity<List<DiaryResponseDTO>> getCalendar(@PathVariable String year_month) throws Exception{
+        List<DiaryResponseDTO> diaryResponseDTOList = diaryService.findListByDate(year_month);
+        return ResponseEntity.ok(diaryResponseDTOList);
+    }
+
+
+    // 특정 날짜 일기 조회 -> 날짜로 조회
+    @GetMapping("/calendar/{date}")
+    public ResponseEntity<DiaryResponseDTO> getDiary(@PathVariable String date) throws Exception{
+        DiaryResponseDTO diaryResponseDTO = diaryService.findByDate(date);
+        return ResponseEntity.ok(diaryResponseDTO);
+    }
+
+
+    // 감정 통계 데이터
+    // model 에 담아서 전달
+    @GetMapping("/emotion/{date}")
+    public void getStatistics(@PathVariable String date, Model model) {
+
+        // 8가지 감정 key : value
+        Map<String, Integer> emotionsData = diaryService.getEmotion(date);
+
+        // emotionData 오름차순 정렬
+        List<Map.Entry<String, Integer>> entryList =
+                new ArrayList<Map.Entry<String, Integer>>(emotionsData.entrySet());
+
+        Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+
+        // 가장 적은 감정
+        String leastEmotion = emotionsData.keySet().iterator().next();
+
+        // 가장 많은 감정
+        Iterator<String> iterator = emotionsData.keySet().iterator();
+        String mostEmotion = "";
+        while (iterator.hasNext()) {
+            mostEmotion = iterator.next();
+        }
+
+        model.addAttribute("emotionsData", emotionsData);
+        model.addAttribute("mostEmotion", mostEmotion);
+        model.addAttribute("leastEmotion", leastEmotion);
+    }
 }
