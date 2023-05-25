@@ -14,5 +14,6 @@ public class UserDecodeJWTDTO {
     private int userId;
     private String userNickname;
     private String userPassword;
+    private String userLoginId;
 
 }
